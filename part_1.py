@@ -4,7 +4,7 @@ import time
 
 time_start = time.time()
 
-num_students = 5000
+num_students = 500000
 num_subjects = 4
 marks = np.random.randint(0, 101, size=(num_students,num_subjects))
 subjects = ["Mathematics","English","Data Structures and Algorithms","High Performance Computing"]
