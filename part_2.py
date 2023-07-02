@@ -1,41 +1,33 @@
 import random
 import numpy as np
-from prettytable import PrettyTable
 from mpi4py import MPI
+import time
+
+time_start = time.time()
+
+# Initialize MPI
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
 
 num_students = 50
 num_subjects = 4
 
-comm = MPI.COMM_WORLD
-rank = comm.Get_rank()
-size_1 = comm.Get_size()
-
-marks = np.random.randint(0, 101, size=(num_students, num_subjects))
-
-local_marks = np.empty((num_students, num_subjects), dtype=int)
-comm.Scatter(marks, local_marks, root=0)
-subject_sums = np.sum(local_marks, axis=0)
-local_averages = np.mean(local_marks, axis=0)
-
-global_averages = np.zeros_like(local_averages)
-comm.Reduce(local_averages, global_averages, op=MPI.SUM, root=0)
+marks = np.random.randint(0, 101, size=(num_students,num_subjects))
+local_data = marks[:,rank]
+local_average = np.mean(local_data)
 
 if rank == 0:
-    subject_averages = global_averages/size_1
+    print(f"Average of Mathematics: >> {local_average}")
+elif rank == 1:
+    print(f"Average of English: >> {local_average}")
+elif rank == 2: 
+    print(f"Average of Data Structures and Algorithms: >> {local_average}")
+elif rank == 3:
+    print(f"Average of High Performance Computing: >> {local_average}")
+else:
+    print("Error: Rank is not in range 0-3")
 
-    marks_table = PrettyTable()
-    marks_table.field_names = ["Student No.", "Mathematics", "English", "Data Structures and Algorithms", "High Performance Computing"]
-    for student in range(num_students):
-        marks_table.add_row([student+1] + marks[student].tolist())
 
-    average_table = PrettyTable()
-    average_table.field_names = ["Subject", "Average Marks"]
-    average_table.add_row(["Mathematics", subject_averages[0]])
-    average_table.add_row(["English", subject_averages[1]])
-    average_table.add_row(["Data Structures and Algorithms", subject_averages[2]])
-    average_table.add_row(["High Performance Computing", subject_averages[3]])
-
-    print("Students' Marks:")
-    print(marks_table)
-    print("\nAverage marks per subject:")
-    print(average_table)
+time_end = time.time()
+print(f"Time taken: {time_end-time_start} seconds")

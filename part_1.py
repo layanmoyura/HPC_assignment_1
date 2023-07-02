@@ -1,6 +1,9 @@
 import random 
 import numpy as np
 from prettytable import PrettyTable
+import time
+
+time_start = time.time()
 
 num_students = 50
 num_subjects = 4
@@ -25,3 +28,7 @@ print("Students' Marks:")
 print(marks_table)
 print("\nAverage marks per subject:")
 print(average_table)
+
+time_end = time.time()
+
+print(f"\nTime taken: {time_end-time_start} seconds")
