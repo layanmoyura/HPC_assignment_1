@@ -1,0 +1,19 @@
+
+
+Time taken: 0.000217437744140625 seconds Number of students: 50
+Time taken: 0.0002620220184326172 seconds Number of students: 100
+Time taken: 0.0005772113800048828 seconds Number of students: 500
+Time taken: 0.0003769397735595703 seconds Number of students: 1000
+Time taken: 0.0005061626434326172 seconds Number of students: 5000
+Time taken: 0.0006310939788818359 seconds Number of students: 10000
+Time taken: 0.002998828887939453 seconds Number of students: 50000
+Time taken: 0.004215717315673828 seconds Number of students: 100000
+Time taken: 0.030795574188232422 seconds Number of students: 500000
+Time taken: 0.061511993408203125 seconds Number of students: 1000000
+
+#after rplacing local_average = np.mean(local_data)
+Time taken: 0.00019168853759765625 seconds Number of students: 50
+Time taken: 0.023186683654785156 seconds Number of students: 100000
+Time taken: 0.4624288082122803 seconds Number of students: 1000000
+Time taken: 0.36769890785217285 seconds Number of students: 1000000
+Time taken: 0.34694981575012207 seconds Number of students: 1000000
