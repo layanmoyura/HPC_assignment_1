@@ -1,11 +1,10 @@
-import random
 import numpy as np
 from mpi4py import MPI
 #import time
 
 #time_start = time.time()
 
-num_students = 1500000
+num_students = 14000000
 num_subjects = 4
 marks = np.random.randint(0, 101, size=(num_students,num_subjects))
 subjects = ["Mathematics","English","Data Structures and Algorithms","High Performance Computing"]
@@ -13,13 +12,13 @@ subjects = ["Mathematics","English","Data Structures and Algorithms","High Perfo
 # Initialize MPI
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
-size = comm.Get_size()
 
 local_data = marks[:,rank]
 local_average = 0
 for student_index in range(num_students):
-        local_average += local_data[student_index]
+       local_average += local_data[student_index]
 local_average /= num_students
+#local_average = np.average(local_data)
 subject = subjects[rank]
 print(f"Average of {subject}: >> {local_average}")
 
