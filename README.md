@@ -11,10 +11,10 @@ source mpi_env/bin/activate
 pip install mpi4py
 ```
 
-## Run Examples
-
-### Python
+## Run All programs and get speed-up values
 
 ```bash
-mpirun -n 4 python3 hello_world.py
+./bash.sh
 ```
+
+##For results and details please refer EG_2018_3397.pdf file

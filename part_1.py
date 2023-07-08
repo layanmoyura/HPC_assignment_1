@@ -1,6 +1,6 @@
 import numpy as np
 
-num_students = 50
+num_students = 2000000
 num_subjects = 4
 marks = np.random.randint(0, 101, size=(num_subjects,num_students))
 subjects = ["Mathematics","English","Data Structures and Algorithms","High Performance Computing"]

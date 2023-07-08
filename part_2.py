@@ -16,7 +16,7 @@ for student_index in range(num_students):
 local_average /= num_students
 #local_average = np.average(local_data)
 subject = subjects[rank]
-print(f"Average of {subject}: >> {local_average}")
+print(f"Average of {subject}: >> {local_average} in rank:{rank}")
 
 
 
