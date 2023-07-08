@@ -17,4 +17,4 @@ pip install mpi4py
 ./bash.sh
 ```
 
-##For results and details please refer EG_2018_3397.pdf file
+
